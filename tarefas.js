@@ -105,3 +105,37 @@ const incluirNovaTarefa = () => {
 
 // Adiciona o evento de clique ao botão de incluir nova tarefa
 botaoIncluir.addEventListener("click", incluirNovaTarefa);
+
+// Filtro de categoria
+// Obtém os elementos do DOM para o filtro de categoria
+const filtroCategoria = document.getElementById("filtro-de-categoria");
+
+// Adiciona o evento de mudança ao filtro de categoria
+filtroCategoria.addEventListener("change", () => {
+  // Obtém a categoria selecionada pelo usuário
+  const categoriaSelecionada = filtroCategoria.value;
+
+  // Obtém todos os itens de tarefa da lista
+  const itensTarefa = document.querySelectorAll(".item-tarefa");
+
+  // Esmaecer as tarefas que não correspondem à categoria selecionada
+  // adicionar a classe `item-tarefa.retido-no-filtro` às tarefas que não correspondem à categoria selecionada
+  itensTarefa.forEach((tarefaElemento) => {
+    // Se nenhuma categoria foi selecionada, exibe todas as tarefas
+    if (categoriaSelecionada === "") {
+      tarefaElemento.classList.remove("retido-no-filtro");
+      return;
+    }
+
+    // Verifica se o item possui a classe da categoria selecionada
+    if (
+      tarefaElemento.classList.contains(`categoria-${categoriaSelecionada}`)
+    ) {
+      // Remove a classe `retido-no-filtro` se a categoria corresponder à selecionada
+      tarefaElemento.classList.remove("retido-no-filtro");
+    } else {
+      // Adiciona a classe `retido-no-filtro` se a categoria não corresponder à selecionada
+      tarefaElemento.classList.add("retido-no-filtro");
+    }
+  });
+});
