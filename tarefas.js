@@ -106,6 +106,13 @@ const incluirNovaTarefa = () => {
 // Adiciona o evento de clique ao botão de incluir nova tarefa
 botaoIncluir.addEventListener("click", incluirNovaTarefa);
 
+// Adiciona o evento de 'Enter' para incluir nova tarefa
+inputTarefa.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    incluirNovaTarefa();
+  }
+});
+
 // Filtro de categoria
 // Obtém os elementos do DOM para o filtro de categoria
 const filtroCategoria = document.getElementById("filtro-de-categoria");
