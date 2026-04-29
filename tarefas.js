@@ -60,6 +60,20 @@ function insereTarefaNaPagina(tarefa) {
   // Adiciona a classe da categoria
   item.classList.add(`categoria-${tarefa.categoria}`);
 
+  // Atualiza o estado da tarefa no objeto original no momento da Inserção
+  // Adiciona o evento de clique diretamente no item
+  item.addEventListener("click", () => {
+    // Atualiza o objeto original
+    tarefa.realizada = !tarefa.realizada; // Inverte o estado da tarefa
+
+    // Atualiza a visualização do item
+    item.classList.toggle("marcado");
+
+    // Logs para depuração
+    console.log(tarefa);
+    console.log(tarefas);
+  });
+
   // Adiciona o item à lista
   const lista = document.getElementById("lista-tarefas");
   lista.appendChild(item);
